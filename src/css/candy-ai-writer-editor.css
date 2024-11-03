@@ -1,0 +1,197 @@
+.candy-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.candy-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background-color: #fff;
+    z-index: 9999;
+    padding: 25px;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 10%);
+    border-radius: 10px;
+}
+
+.candy-popup-header {
+    position: relative;
+    height: 50px;
+    height: 10%;
+    width: 100%;
+    color: #fff;
+
+}
+
+.popup-title {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.candy-undo-button {
+    position: absolute;
+    right: 0px;
+    padding: 0px;
+    background-image: url(../../assets/undo_icon.png);
+    width: 22px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+}
+
+.candy-continue-button {
+    position: absolute;
+    right: 30px;
+    padding: 0px;
+    background-image: url(../../assets/continue_icon.png);
+    width: 22px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+}
+
+.candy-icon {
+    width: 22px;
+    height: 22px;
+    background-image: url(../../assets/candy_icon.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    left: 0px;
+}
+
+.candy-my-credits {
+    font-size: 15px;
+    position: absolute;
+    left: 28px;
+    color: #000;
+}
+
+.candy-popup-body {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    background-color: #fff;
+    color: blue;
+    display:inline-block;
+}
+
+.candy-popup-footer {
+    position: relative;
+    height: 10%;
+    background-color: #fff;
+    color: #000;
+    border-radius: 0 0 10px 10px;
+    text-align: right;
+}
+
+.candy-prompt-input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.candy-div {
+    position: relative;
+    width: 50%;
+    background-color: #eee;
+    border-radius: 5px;
+    height:90%;
+    padding: 5px 10px;
+}
+.candy-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #007cba;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.candy-popup-content {
+    overflow: auto;
+    color: red;
+}
+
+.arrow-icon {
+    width:22px;
+    height:22px;
+    background-image: url(../../assets/arrow_icon.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    margin: auto
+}
+
+.candy-loading-icon {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 12px;
+    background-image: url(../../assets/loading_icon.gif);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: none;
+    z-index: 1;
+}
+
+.candy-ai-reference {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    border: none;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 20%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.candy-tab-content {
+    padding: 10px;
+}
+
+.candy-tab.active-tab {
+    background-color: #3b45ff;
+    color: #fff;
+}
+
+.candy-tab-panel > div:nth-child(1) {
+    display: flex;
+    justify-content: space-evenly
+}
+
+.selected {
+    background-color: #3b45ff;
+    color: #fff;
+}
