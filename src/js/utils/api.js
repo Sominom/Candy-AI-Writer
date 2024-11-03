@@ -66,6 +66,33 @@ export const getApiKey = (json = true) => {
         });
 };
 
+// 답변에 참조할 데이터 가져오기
+export const getReferenceData = () => {
+    console.log(jQuery(".candy-ai-reference").val());
+    return jQuery(".candy-ai-reference").val() ? jQuery(".candy-ai-reference").val() : "";
+};
+
+// 포스트 메타에 참조 데이터 설정
+export const setReferenceToPostMeta = async (postId, reference) => {
+    return ajaxRequest("set_reference_to_post_meta", { postId, reference })
+    .catch(error => {
+        console.error("Error setting reference to post meta:", error);
+        throw error;
+    });
+}
+
+// 포스트 메타에서 참조 데이터 가져오기
+export const getReferenceFromPostMeta = async (postId) => {
+    return ajaxRequest("get_reference_from_post_meta", { postId })
+        .then(response => {
+            return response["reference"] ? response["reference"] : "";
+        })
+        .catch(error => {
+            console.error("Error getting reference from post meta:", error);
+            throw error;
+        });
+}
+
 export const getPluginUrl = async (json = true) => {
     try {
         const response = await ajaxRequest("get_plugin_url", { json });
@@ -131,6 +158,7 @@ export const getJsonData = async (content, reference = '', route) => {
     })
 
     return response.json().then(data => {
+        console.log(data);
         return data.message;
     }
     ).catch(error => {
@@ -139,16 +167,11 @@ export const getJsonData = async (content, reference = '', route) => {
     });
 };
 
-export const getEnhancedData = async (content, reference = '') => {
-    return getJsonData(content, reference, 'enhance');
+export const getEnhancedData = async (content) => {
+    return getJsonData(content, '', 'enhance');
 };
 
-export const getCreatedData = async (content, reference = '') => {
-    return getJsonData(content, reference, 'create');
+export const getCreatedData = async (content) => {
+    return getJsonData(content, getReferenceData(), 'create');
 }
 
-
-// 답변에 참조할 데이터 가져오기
-export const getReferenceData = () => {
-    return "";
-};

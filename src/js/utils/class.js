@@ -8,14 +8,14 @@ class UndoTemp {
   }
 
   pop() {
-    if (this.undoTemp.length > 1) {
+    if (this.undoTemp.length > 0) {
       this.undoTemp.pop();
     }
 
   }
 
   get() {
-    return this.undoTemp.join('');
+    return this.undoTemp[this.undoTemp.length - 1];
   }
 }
 
@@ -29,7 +29,9 @@ class BodyContent {
   }
 
   set(value) {
-    this.content = value;
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = value;
+    this.content = tempDiv.textContent || tempDiv.innerText || '';
   }
 
   get() {

@@ -1,7 +1,5 @@
 <?php
 
-use function ElementorDeps\DI\add;
-
 $API_URL = 'https://api.edix.studio';
 
 function _get_api_key($json = false)
@@ -146,3 +144,43 @@ function get_credits()
     wp_die();
 }
 add_action('wp_ajax_get_credits', 'get_credits');
+
+function set_reference_to_post_meta()
+{
+
+    $reference = isset($_POST['reference']) ? $_POST['reference'] : false;
+    $post_id = isset($_POST['postId']) ? $_POST['postId'] : false;
+
+    // 권한 확인
+    if (! current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    if ($reference && $post_id) {
+        error_log("update_post_meta: " . $reference);
+        $result = update_post_meta($post_id, 'candy_ai_reference', $reference);
+        if ($result) {
+            error_log("Post meta updated successfully for post ID: $post_id with reference: $reference");
+        } else {
+            error_log("Failed to update post meta for post ID: $post_id with reference: $reference");
+        }
+    }
+}
+add_action('wp_ajax_set_reference_to_post_meta', 'set_reference_to_post_meta');
+
+function get_reference_from_post_meta() {
+    error_log("get_reference_from_post_meta called");
+    error_log("POST data: " . print_r($_POST, true));
+
+    $post_id = isset($_POST['postId']) ? $_POST['postId'] : false;
+
+    if ($post_id) {
+        $reference = get_post_meta($post_id, 'candy_ai_reference', true);
+        error_log("Retrieved reference for post ID $post_id: $reference");
+        wp_send_json(array('reference' => $reference));
+    } else {
+        error_log("No post ID provided");
+        wp_send_json(array('error' => 'No post ID provided'));
+    }
+}
+add_action('wp_ajax_get_reference_from_post_meta', 'get_reference_from_post_meta');
